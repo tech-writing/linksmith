@@ -11,7 +11,7 @@ After invoking `poe check`, and observing the software tests succeed, you
 should be ready to start hacking.
 
 ```shell
-git clone https://github.com/sphinx-tools/linksmith
+git clone https://github.com/tech-writing/linksmith
 cd linksmith
 python3 -m venv .venv
 source .venv/bin/activate
