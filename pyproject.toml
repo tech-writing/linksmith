@@ -38,7 +38,7 @@ authors = [
 ]
 requires-python = ">=3.7"
 classifiers = [
-  "Development Status :: 4 - Beta",
+  "Development Status :: 1 - Planning",
   "Environment :: Web Environment",
   "Framework :: Sphinx",
   "Intended Audience :: Customer Service",
@@ -109,10 +109,10 @@ test = [
   "sphinx_pytest<0.3",
 ]
 [project.urls]
-changelog = "https://github.com/sphinx-tools/linksmith/blob/main/CHANGES.md"
+changelog = "https://github.com/tech-writing/linksmith/blob/main/CHANGES.md"
 documentation = "https://linksmith.readthedocs.io/"
 homepage = "https://linksmith.readthedocs.io/"
-repository = "https://github.com/sphinx-tools/linksmith"
+repository = "https://github.com/tech-writing/linksmith"
 
 [tool.black]
 line-length = 120

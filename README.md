@@ -33,7 +33,7 @@ considering.
 ## Setup
 
 ```bash
-pip install 'linksmith @ git+https://github.com/sphinx-tools/linksmith.git'
+pip install 'linksmith @ git+https://github.com/tech-writing/linksmith.git'
 ```
 
 
@@ -108,22 +108,22 @@ lovely people around Sphinx and Read the Docs.
 [sphobjinv]: https://sphobjinv.readthedocs.io/
 [Sviatoslav Sydorenko]: https://github.com/webknjaz
 
-[Changelog]: https://github.com/sphinx-tools/linksmith/blob/main/CHANGES.md
+[Changelog]: https://github.com/tech-writing/linksmith/blob/main/CHANGES.md
 [Documentation]: https://linksmith.readthedocs.io/
-[Issues]: https://github.com/sphinx-tools/linksmith/issues
-[License]: https://github.com/sphinx-tools/linksmith/blob/main/LICENSE
+[Issues]: https://github.com/tech-writing/linksmith/issues
+[License]: https://github.com/tech-writing/linksmith/blob/main/LICENSE
 [PyPI]: https://pypi.org/project/linksmith/
-[Source code]: https://github.com/sphinx-tools/linksmith
+[Source code]: https://github.com/tech-writing/linksmith
 
-[badge-coverage]: https://codecov.io/gh/sphinx-tools/linksmith/branch/main/graph/badge.svg
+[badge-coverage]: https://codecov.io/gh/tech-writing/linksmith/branch/main/graph/badge.svg
 [badge-downloads-per-month]: https://pepy.tech/badge/linksmith/month
-[badge-license]: https://img.shields.io/github/license/sphinx-tools/linksmith.svg
+[badge-license]: https://img.shields.io/github/license/tech-writing/linksmith.svg
 [badge-package-version]: https://img.shields.io/pypi/v/linksmith.svg
 [badge-python-versions]: https://img.shields.io/pypi/pyversions/linksmith.svg
 [badge-status]: https://img.shields.io/pypi/status/linksmith.svg
-[badge-tests]: https://github.com/sphinx-tools/linksmith/actions/workflows/main.yml/badge.svg
-[project-codecov]: https://codecov.io/gh/sphinx-tools/linksmith
+[badge-tests]: https://github.com/tech-writing/linksmith/actions/workflows/main.yml/badge.svg
+[project-codecov]: https://codecov.io/gh/tech-writing/linksmith
 [project-downloads]: https://pepy.tech/project/linksmith/
-[project-license]: https://github.com/sphinx-tools/linksmith/blob/main/LICENSE
+[project-license]: https://github.com/tech-writing/linksmith/blob/main/LICENSE
 [project-pypi]: https://pypi.org/project/linksmith
-[project-tests]: https://github.com/sphinx-tools/linksmith/actions/workflows/main.yml
+[project-tests]: https://github.com/tech-writing/linksmith/actions/workflows/main.yml
