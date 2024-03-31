@@ -1,27 +1,12 @@
 # Linksmith
 
+A program for processing Hyperlinks, Sphinx references, and inventories.
+
 Longing for a Hyperlink, \
 already in hand.
 
 MEP 0002, \
 considering.
-
-<div style="float: left">
-
-## Why
-
-- Grown out of passion for [Sphinx], [Hyperlinks], and [DWIM],
-  and a sweet conversation at pueblo's sketch about [adding an inventory
-  decoder for Sphinx].
-- To learn [sphobjinv], and explore a few convenience heuristics around it.
-- To host code for community operations, alongside software tests and
-  packaging, in order to provide better maintainability and code re-use.
-- Along the lines of shuffling code around, provide a few tangible features
-  [collected the other day][rfc].
-
-</div>
-
-<div style="float: right">
 
 » [Documentation]
 | [Changelog]
@@ -33,18 +18,24 @@ considering.
 
 [![CI][badge-tests]][project-tests]
 [![Coverage Status][badge-coverage]][project-codecov]
-[![License][badge-license]][project-license]
 [![Downloads per month][badge-downloads-per-month]][project-downloads]
 
-[![Supported Python versions][badge-python-versions]][project-pypi]
+[![License][badge-license]][project-license]
 [![Status][badge-status]][project-pypi]
+[![Supported Python versions][badge-python-versions]][project-pypi]
 [![Package version][badge-package-version]][project-pypi]
 
-</div>
 
-<div style="clear: both">
-</div>
+## Why
 
+- Grown out of passion for [Sphinx], [Hyperlinks], and [DWIM],
+  and a sweet conversation at pueblo's sketch about [adding an inventory
+  decoder for Sphinx].
+- To learn [sphobjinv], and explore a few convenience heuristics around it.
+- To host code for community operations, alongside software tests and
+  packaging, in order to provide better maintainability and code re-use.
+- Along the lines of shuffling code around, provide a few tangible features
+  [collected the other day][rfc].
 
 
 ## Setup
