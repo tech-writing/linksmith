@@ -3,8 +3,7 @@
 _A program for processing Hyperlinks, Sphinx references, and inventories._
 
 Longing for a Hyperlink, \
-already in hand.
-
+already in hand. \
 MEP 0002, \
 considering.
 
@@ -14,8 +13,9 @@ considering.
 | [Issues]
 | [Source code]
 | [License]
-| [![CI][badge-tests]][project-tests]
-| [![Coverage status][badge-coverage]][project-codecov]
+
+[![CI][badge-tests]][project-tests]
+[![Coverage status][badge-coverage]][project-codecov]
 
 
 ## Why

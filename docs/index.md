@@ -10,8 +10,7 @@ A program for processing Hyperlinks, Sphinx references, and inventories.
 ::::{grid-item-card} {material-outlined}`lightbulb;1.5em` Haiku
 :shadow: md
 Longing for a Hyperlink, \
-already in hand.
-
+already in hand. \
 MEP 0002, \
 considering.
 ::::
