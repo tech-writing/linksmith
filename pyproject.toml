@@ -105,7 +105,7 @@ release = [
 ]
 test = [
   "pytest<9",
-  "pytest-cov<5",
+  "pytest-cov<6",
   "sphinx_pytest<0.3",
 ]
 [project.urls]
