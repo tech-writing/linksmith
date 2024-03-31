@@ -1,0 +1,9 @@
+.idea
+.coverage
+.eggs
+.venv*
+*.egg-info
+__pycache__
+/dist
+/docs/_build
+/coverage.xml

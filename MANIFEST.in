@@ -1,0 +1,4 @@
+include *.md *.rst LICENSE
+recursive-include docs *.md *.rst
+prune release
+prune tests
