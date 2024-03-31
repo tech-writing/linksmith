@@ -1,6 +1,6 @@
 # Linksmith
 
-A program for processing Hyperlinks, Sphinx references, and inventories.
+_A program for processing Hyperlinks, Sphinx references, and inventories._
 
 Longing for a Hyperlink, \
 already in hand.
@@ -14,16 +14,8 @@ considering.
 | [Issues]
 | [Source code]
 | [License]
-
-
-[![CI][badge-tests]][project-tests]
-[![Coverage Status][badge-coverage]][project-codecov]
-[![Downloads per month][badge-downloads-per-month]][project-downloads]
-
-[![License][badge-license]][project-license]
-[![Status][badge-status]][project-pypi]
-[![Supported Python versions][badge-python-versions]][project-pypi]
-[![Package version][badge-package-version]][project-pypi]
+| [![CI][badge-tests]][project-tests]
+| [![Coverage status][badge-coverage]][project-codecov]
 
 
 ## Why
