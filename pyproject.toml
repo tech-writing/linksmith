@@ -96,6 +96,7 @@ docs = [
   "sphinx<7.3",
   "sphinx-autobuild==2024.2.4",
   "sphinx-copybutton<0.6",
+  "sphinx-design-elements<0.3",
 ]
 release = [
   "build<2",
@@ -220,7 +221,7 @@ check = [
 ]
 
 docs-autobuild = [
-  { cmd = "sphinx-autobuild --open-browser --watch docs docs/_build" }
+  { cmd = "sphinx-autobuild --open-browser --watch=docs docs docs/_build" }
 ]
 docs-html = [
   { cmd = "sphinx-build -W --keep-going docs docs/_build" }
