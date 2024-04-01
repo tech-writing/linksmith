@@ -8,6 +8,7 @@ Source:
 
 import dataclasses
 import io
+import json
 import logging
 import typing as t
 from contextlib import redirect_stdout
@@ -135,7 +136,7 @@ class InventoryFormatter:
         print(html)
 
     def to_json(self):
-        print(self.soi.json_dict())
+        print(json.dumps(self.soi.json_dict()))
 
     def to_yaml(self):
         logger.warning("There is certainly a better way to present an inventory in YAML format")

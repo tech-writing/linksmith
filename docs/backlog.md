@@ -7,6 +7,8 @@
   **Full details**, well, should display **full URLs**, ready for
   navigational consumption (clicking).
 - Improve HTML output. (sticky breadcrumb/navbar, etc.)
+- More attractive JSON output
+  https://github.com/tech-writing/linksmith/pull/4#discussion_r1546863551
 
 ## Iteration +2
 sphobjinv call delegation ftw.
