@@ -1,0 +1,2 @@
+tests/assets/linksmith.inv
+tests/assets/sde.inv

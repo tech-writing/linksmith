@@ -38,17 +38,19 @@ pip install 'linksmith @ git+https://github.com/tech-writing/linksmith.git'
 
 
 ## Usage
-Nothing works yet. All just sketched out.
 
-sphobjinv call delegation ftw.
-```
-# Shorthand command ...
-anansi suggest matplotlib draw
-
-# ... for:
-sphobjinv suggest -u https://matplotlib.org/stable/ draw
+```shell
+linksmith inventory https://linksmith.readthedocs.io/en/latest/objects.inv
 ```
 
+Read more at the [Linksmith Usage] documentation.
+
+The `linksmith inventory` subsystem is heavily based on
+`sphinx.ext.intersphinx` and `sphobjinv`.
+
+> [!WARNING]
+> Here be dragons. Please note the program is pre-alpha, and a work in
+> progress, so everything may change while we go.
 
 
 ## Development
@@ -89,7 +91,7 @@ please let us know._
 
 ## Acknowledgements
 
-Kudos to [Sviatoslav Sydorenko], [Brian Skinn], [Chris Sewell], and all other
+Kudos to [Brian Skinn], [Sviatoslav Sydorenko], [Chris Sewell], and all other
 lovely people around Sphinx and Read the Docs.
 
 
@@ -103,6 +105,7 @@ lovely people around Sphinx and Read the Docs.
 [Hyperlinks]: https://en.wikipedia.org/wiki/Hyperlink
 [linksmith]: https://linksmith.readthedocs.io/
 [`linksmith`]: https://pypi.org/project/linksmith/
+[Linksmith Usage]: https://linksmith.readthedocs.io/en/latest/usage.html
 [rfc]: https://linksmith.readthedocs.io/en/latest/rfc.html
 [Sphinx]: https://www.sphinx-doc.org/
 [sphobjinv]: https://sphobjinv.readthedocs.io/
