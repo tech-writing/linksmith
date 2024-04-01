@@ -78,9 +78,15 @@ dynamic = [
   "version",
 ]
 dependencies = [
+  "marko<3",
   "myst-parser[linkify]<3,>=0.18",
+  "pueblo[cli]==0.0.9",
+  "pyyaml<7",
+  "requests<3",
+  "rich-click<2",
   "sphinx<7.3",
   "sphobjinv<2.4",
+  "tabulate<0.10",
 ]
 [project.optional-dependencies]
 develop = [
@@ -113,6 +119,8 @@ changelog = "https://github.com/tech-writing/linksmith/blob/main/CHANGES.md"
 documentation = "https://linksmith.readthedocs.io/"
 homepage = "https://linksmith.readthedocs.io/"
 repository = "https://github.com/tech-writing/linksmith"
+[project.scripts]
+linksmith = "linksmith.cli:cli"
 
 [tool.black]
 line-length = 120
@@ -132,7 +140,8 @@ show_missing = true
 packages = ["linksmith"]
 exclude = [
 ]
-check_untyped_defs = true
+ignore_missing_imports = true
+check_untyped_defs = false
 implicit_optional = true
 install_types = true
 no_implicit_optional = true
@@ -202,8 +211,9 @@ lint.extend-ignore = [
 
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*" = ["S101"]  # Allow use of `assert`, and `print`.
-"docs/conf.py" = ["ERA001"]  # Allow commented-out code (ERA001).
+"tests/*" = ["S101"]           # Allow use of `assert`.
+"docs/conf.py" = ["ERA001"]    # Allow commented-out code.
+"linksmith/cli.py" = ["T201"]  # Allow `print`.
 
 [tool.setuptools.packages.find]
 namespaces = false

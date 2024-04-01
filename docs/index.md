@@ -2,7 +2,7 @@
 
 A program for processing Hyperlinks, Sphinx references, and inventories.
 
-:::::{grid} 1 3 3 3
+::::::{grid} 1 3 3 3
 :margin: 4 4 0 0
 :padding: 0
 :gutter: 2
@@ -26,15 +26,41 @@ Just the proposal, nothing more.
 - [](#rfc-community-operations)
 ::::
 
-:::::
+::::{grid-item}
+:::{card} Setup
+:margin: 0 2 0 0
+:link: setup
+:link-type: ref
+`pip install ...`
+:::
+:::{card} Usage
+:margin: 0 2 0 0
+:link: usage
+:link-type: ref
+`linksmith inventory ...`
+:::
+::::
+
+::::::
 
 
 :::{toctree}
+:caption: Handbook
 :hidden:
 
 rfc
-sandbox
+setup
+usage
+:::
+
+
+:::{toctree}
+:caption: Workbench
+:hidden:
+
 project
+sandbox
+backlog
 :::
 
 
