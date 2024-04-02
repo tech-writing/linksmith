@@ -7,6 +7,7 @@ from linksmith.settings import help_config
 
 from .model import OutputFormatRegistry
 from .sphinx.cli import cli as inventory_cli
+from .sphinx.community.anansi import cli as anansi_cli
 
 
 @click.group()
@@ -31,3 +32,4 @@ def output_formats(ctx: click.Context):  # noqa: ARG001
 
 cli.add_command(output_formats, name="output-formats")
 cli.add_command(inventory_cli, name="inventory")
+cli.add_command(anansi_cli, name="anansi")

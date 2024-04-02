@@ -46,3 +46,19 @@ linksmith inventory \
   https://github.com/crate/crate-docs/raw/main/registry/sphinx-inventories.txt \
   --format=html+table
 ```
+
+
+## Anansi
+
+Suggest references from curated intersphinx inventories.
+
+:::{rubric} Synopsis
+:::
+
+```shell
+anansi suggest matplotlib draw
+```
+
+```shell
+anansi suggest sarge capture
+```

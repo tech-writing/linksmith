@@ -120,6 +120,7 @@ documentation = "https://linksmith.readthedocs.io/"
 homepage = "https://linksmith.readthedocs.io/"
 repository = "https://github.com/tech-writing/linksmith"
 [project.scripts]
+anansi = "linksmith.sphinx.community.anansi:cli"
 linksmith = "linksmith.cli:cli"
 
 [tool.black]
