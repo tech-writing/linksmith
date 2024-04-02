@@ -9,13 +9,7 @@
 - Improve HTML output. (sticky breadcrumb/navbar, etc.)
 - More attractive JSON output
   https://github.com/tech-writing/linksmith/pull/4#discussion_r1546863551
-
-## Iteration +2
-sphobjinv call delegation ftw.
-```
-# Shorthand command ...
-anansi suggest matplotlib draw
-
-# ... for:
-sphobjinv suggest -u https://matplotlib.org/stable/ draw
-```
+- anansi: Display list of curated inventories.
+- anansi: Accept and delegate `threshold` and `score` parameters.
+- anansi: Expand list of curated projects to essentially any project, with
+  support of PyPI, RTD, or other project conventions.
