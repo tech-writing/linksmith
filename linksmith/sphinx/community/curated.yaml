@@ -1,0 +1,102 @@
+- name: python
+  version: 3
+  url: https://docs.python.org/3/
+  tags:
+    - bskinn
+- name: python
+  version: 3.9
+  url: https://docs.python.org/3.9/
+  tags:
+    - bskinn
+- name: attrs
+  url: https://www.attrs.org/en/stable/
+  tags:
+    - bskinn
+- name: django
+  url: https://docs.djangoproject.com/en/dev/
+  tags:
+    - bskinn
+- name: flask
+  version: 1.1
+  url: https://flask.palletsprojects.com/en/1.1.x/
+  tags:
+    - bskinn
+- name: flask
+  version: 2.2
+  url: https://flask.palletsprojects.com/en/2.2.x/
+  tags:
+    - bskinn
+- name: flask
+  version: 3.0
+  url: https://flask.palletsprojects.com/en/3.0.x/
+  tags:
+    - bskinn
+- name: h5py
+  url: https://docs.h5py.org/en/latest/
+  tags:
+    - bskinn
+- name: matplotlib
+  url: https://matplotlib.org/stable/
+  tags:
+    - bskinn
+- name: numpy
+  url: https://numpy.org/doc/stable/
+  tags:
+    - bskinn
+- name: pandas
+  url: https://pandas.pydata.org/docs/
+  tags:
+    - bskinn
+- name: pyramid
+  url: https://docs.pylonsproject.org/projects/pyramid/en/latest/
+  tags:
+    - bskinn
+- name: scikit-learn
+  url: https://scikit-learn.org/stable/
+  tags:
+    - bskinn
+- name: sphinx
+  url: https://www.sphinx-doc.org/en/master/
+  tags:
+    - bskinn
+- name: sympy
+  url: https://docs.sympy.org/latest/
+  tags:
+    - bskinn
+- name: scipy
+  url: https://docs.scipy.org/doc/scipy/
+  tags:
+    - bskinn
+- name: scipy
+  version: 1.6.3
+  url: https://docs.scipy.org/doc/scipy-1.6.3/reference/
+  tags:
+    - bskinn
+- name: scipy
+  version: 1.7.0
+  url: https://docs.scipy.org/doc/scipy-1.7.0/
+  tags:
+    - bskinn
+- name: scipy
+  version: 1.7.1
+  url: https://docs.scipy.org/doc/scipy-1.7.1/
+  tags:
+    - bskinn
+- name: scipy
+  version: 1.8.0
+  url: https://docs.scipy.org/doc/scipy-1.8.0/
+  tags:
+    - bskinn
+- name: scipy
+  version: 1.8.1
+  url: https://docs.scipy.org/doc/scipy-1.8.1/
+  tags:
+    - bskinn
+- name: sarge
+  url: https://sarge.readthedocs.io/en/latest/
+  tags:
+    - bskinn
+- name: linksmith
+  url: https://linksmith.readthedocs.io/en/latest/
+  tags:
+    - amotl

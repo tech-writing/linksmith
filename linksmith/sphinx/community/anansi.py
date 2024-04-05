@@ -13,8 +13,12 @@ Resources:
 import dataclasses
 import logging
 import sys
+import typing as t
+from functools import cache
+from importlib.resources import files
 
 import rich_click as click
+import yaml
 from pueblo.util.cli import boot_click
 
 from linksmith.settings import help_config
@@ -25,50 +29,55 @@ logger = logging.getLogger(__name__)
 
 @dataclasses.dataclass
 class Item:
+    """
+    Manage an item in the project index file, e.g. `curated.yaml`.
+    """
+
     name: str
     url: str
+    version: t.Optional[str] = None
+    tags: t.Optional[t.List[str]] = dataclasses.field(default_factory=list)
 
 
-items = [
-    Item("python@3", "https://docs.python.org/3/"),
-    Item("python@3.9", "https://docs.python.org/3.9/"),
-    Item("attrs", "https://www.attrs.org/en/stable/"),
-    Item("django", "https://docs.djangoproject.com/en/dev/"),
-    Item("flask@2.2", "https://flask.palletsprojects.com/en/2.2.x/"),
-    Item("flask@1.1", "https://flask.palletsprojects.com/en/1.1.x/"),
-    Item("h5py", "https://docs.h5py.org/en/latest/"),
-    Item("matplotlib", "https://matplotlib.org/stable/"),
-    Item("numpy", "https://numpy.org/doc/stable/"),
-    Item("pandas", "https://pandas.pydata.org/docs/"),
-    Item("pyramid", "https://docs.pylonsproject.org/projects/pyramid/en/latest/"),
-    Item("scikit-learn", "https://scikit-learn.org/stable/"),
-    Item("sphinx", "https://www.sphinx-doc.org/en/master/"),
-    Item("sympy", "https://docs.sympy.org/latest/"),
-    Item("scipy", "https://docs.scipy.org/doc/scipy/"),
-    Item("scipy@1.8.1", "https://docs.scipy.org/doc/scipy-1.8.1/"),
-    Item("scipy@1.8.0", "https://docs.scipy.org/doc/scipy-1.8.0/"),
-    Item("scipy@1.7.1", "https://docs.scipy.org/doc/scipy-1.7.1/"),
-    Item("scipy@1.7.0", "https://docs.scipy.org/doc/scipy-1.7.0/"),
-    Item("scipy@1.6.3", "https://docs.scipy.org/doc/scipy-1.6.3/reference/"),
-    Item("sarge", "https://sarge.readthedocs.io/en/latest/"),
-]
+class AnansiLibrary:
+    """
+    Manage a list of curated projects, and provide exploration features on top of their Sphinx documentation.
+    """
 
+    index_file = "curated.yaml"
 
-def suggest(project: str, term: str):
-    for item in items:
-        if item.name == project:
-            url = f"{item.url.rstrip('/')}/objects.inv"
-            inv = InventoryManager(url).soi_factory()
-            results = inv.suggest(term)
-            if results:
-                hits = len(results)
-                logger.info(f"{hits} hits for project/term: {project}/{term}")
-                return results
-            else:
-                logger.warning(f"No hits for project/term: {project}/{term}")
-                return []
-    else:
-        raise KeyError(f"Project not found: {project}")
+    @cache
+    def read(self) -> t.List[Item]:
+        return yaml.safe_load(files("linksmith.sphinx.community").joinpath(self.index_file).read_text())
+
+    @property
+    def items(self):
+        data = []
+        for raw in self.read():
+            data.append(Item(**raw))
+        return data
+
+    def suggest(self, project: str, term: str):
+        """
+        Find occurrences for "term" in Sphinx inventory.
+        A wrapper around sphobjinv's `suggest`.
+
+        https://sphobjinv.readthedocs.io/en/stable/cli/suggest.html
+        """
+        for item in self.items:
+            if item.name == project:
+                url = f"{item.url.rstrip('/')}/objects.inv"
+                inv = InventoryManager(url).soi_factory()
+                results = inv.suggest(term)
+                if results:
+                    hits = len(results)
+                    logger.info(f"{hits} hits for project/term: {project}/{term}")
+                    return results
+                else:
+                    logger.warning(f"No hits for project/term: {project}/{term}")
+                    return []
+        else:
+            raise KeyError(f"Project not found: {project}")
 
 
 @click.group()
@@ -91,8 +100,9 @@ def cli_suggest(ctx: click.Context, project: str, term: str):  # noqa: ARG001
     """
     Fuzzy-search intersphinx inventory for desired object(s).
     """
+    library = AnansiLibrary()
     try:
-        results = suggest(project, term)
+        results = library.suggest(project, term)
         print("\n".join(results))  # noqa: T201
     except Exception as ex:
         logger.error(str(ex).strip("'"))
