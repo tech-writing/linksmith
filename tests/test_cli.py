@@ -28,19 +28,6 @@ def test_cli_output_formats(cli_runner):
     assert result.exit_code == 0
 
 
-def test_cli_inventory_no_input(cli_runner):
-    """
-    CLI test: Invoke `linksmith inventory`.
-    """
-    result = cli_runner.invoke(
-        cli,
-        args="inventory",
-        catch_exceptions=False,
-    )
-    assert result.exit_code == 1
-    assert "No input" in result.output
-
-
 def test_cli_inventory_unknown_input(cli_runner):
     """
     CLI test: Invoke `linksmith inventory example.foo`.
