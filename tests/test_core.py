@@ -33,7 +33,6 @@ tests/assets/sde.inv
     inventories_to_text(urls, format_)
 
 
-@pytest.mark.skip("Does not work yet")
 def test_multiple_inventories_url():
     url = "https://github.com/tech-writing/linksmith/raw/main/tests/assets/index.txt"
     inventories_to_text(url, "html")
