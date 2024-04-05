@@ -56,6 +56,7 @@ linksmith inventory
 ```
 
 
+(anansi)=
 ## Anansi
 
 Suggest references from curated intersphinx inventories.
