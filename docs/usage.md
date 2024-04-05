@@ -48,6 +48,14 @@ linksmith inventory \
 ```
 
 
+:::{rubric} Auto-Discovery
+:::
+Discover `objects.inv` in working directory.
+```shell
+linksmith inventory
+```
+
+
 ## Anansi
 
 Suggest references from curated intersphinx inventories.

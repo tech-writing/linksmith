@@ -1,5 +1,8 @@
+from unittest.mock import patch
+
 import pytest
 
+from linksmith.sphinx.core import dump_inventory_universal
 from linksmith.sphinx.inventory import InventoryFormatter, InventoryManager
 from tests.config import OBJECTS_INV_PATH
 
@@ -25,3 +28,24 @@ def test_inventory_manager_unknown():
     with pytest.raises(NotImplementedError) as ex:
         invman.soi_factory()
     assert ex.match("Resource type not implemented: foo")
+
+
+def test_cli_inventory_autodiscover(capsys):
+    """
+    Verify local `objects.inv` auto-discovery works.
+    """
+    with patch("linksmith.sphinx.util.LocalObjectsInv.objects_inv_candidates", ["tests/assets/linksmith.inv"]):
+        dump_inventory_universal([])
+    out, err = capsys.readouterr()
+    assert "std:doc" in out
+    assert "std:label" in out
+
+
+def test_inventory_no_input():
+    """
+    Exercise a failing auto-discovery, where absolutely no input files can be determined.
+    """
+    with patch("linksmith.sphinx.util.LocalObjectsInv.objects_inv_candidates", []):
+        with pytest.raises(FileNotFoundError) as ex:
+            dump_inventory_universal([])
+        ex.match("No inventory specified, and none discovered: No objects.inv found in working directory")

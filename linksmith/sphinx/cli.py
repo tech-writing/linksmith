@@ -1,10 +1,12 @@
+import logging
 import typing as t
 
 import rich_click as click
-from click import ClickException
 
 from linksmith.settings import help_config
-from linksmith.sphinx.core import inventories_to_text, inventory_to_text
+from linksmith.sphinx.core import dump_inventory_universal
+
+logger = logging.getLogger(__name__)
 
 
 @click.command()
@@ -30,18 +32,15 @@ def cli(ctx: click.Context, infiles: t.List[str], format_: str):
     ```bash
     linksmith inventory https://github.com/crate/crate-docs/raw/main/registry/sphinx-inventories.txt
     ```
+
+    Discover `objects.inv` in working directory:
+    ```bash
+    linksmith inventory
+    ```
     """
-    if not infiles:
-        raise click.ClickException("No input")
-    for infile in infiles:
-        try:
-            if infile.endswith(".inv"):
-                inventory_to_text(infile, format_=format_)
-            elif infile.endswith(".txt"):
-                inventories_to_text(infile, format_=format_)
-            else:
-                raise NotImplementedError(f"Unknown input file type: {infile}")
-        except Exception as ex:
-            if ctx.parent and ctx.parent.params.get("debug"):
-                raise
-            raise ClickException(f"{ex.__class__.__name__}: {ex}")
+    try:
+        dump_inventory_universal(infiles, format_)
+    except Exception as ex:
+        if ctx.parent and ctx.parent.params.get("debug"):
+            raise
+        raise click.ClickException(str(ex))

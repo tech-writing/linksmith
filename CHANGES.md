@@ -8,3 +8,5 @@
 - Implement `linksmith anansi suggest`, also available as `anansi`,
   to easily suggest terms of a few curated community projects.
   Thanks, @bskinn.
+- Accept `linksmith inventory` without `INFILES` argument, implementing
+  auto-discovery of `objects.inv` in local current working directory.
