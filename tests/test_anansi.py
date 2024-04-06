@@ -69,3 +69,23 @@ def test_anansi_suggest_miss(cli_runner, caplog):
     )
     assert result.exit_code == 0
     assert "No hits for project/term: sarge/foo" in caplog.messages
+
+
+def test_anansi_suggest_via_rtd(cli_runner):
+    result = cli_runner.invoke(
+        cli,
+        args="anansi suggest requests-cache patch --threshold=75",
+        catch_exceptions=False,
+    )
+    assert result.exit_code == 0
+    assert ":std:label:`patching`" in result.output
+
+
+def test_anansi_suggest_via_pypi(cli_runner):
+    result = cli_runner.invoke(
+        cli,
+        args="anansi suggest beradio json",
+        catch_exceptions=False,
+    )
+    assert result.exit_code == 0
+    assert ":py:method:`beradio.message.BERadioMessage.json`" in result.output

@@ -14,3 +14,4 @@
 - Anansi: Provide `anansi list-projects` subcommand, to list curated
   projects managed in accompanying `curated.yaml` file.
 - Anansi: Accept `--threshold` option, forwarding to `sphobjinv`.
+- Anansi: Discover `objects.inv` also from RTD and PyPI.

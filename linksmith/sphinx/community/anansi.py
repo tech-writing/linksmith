@@ -25,6 +25,7 @@ from verlib2 import Version
 
 from linksmith.settings import help_config
 from linksmith.sphinx.inventory import InventoryManager
+from linksmith.sphinx.util import RemoteObjectsInv
 from linksmith.util.data import multikeysort
 
 logger = logging.getLogger(__name__)
@@ -82,7 +83,24 @@ class AnansiLibrary:
             data.append(item.to_dict())
         return data
 
-    def suggest(self, project: str, term: str, threshold: int = 50):
+    def get_project_documentation_url(self, project: str) -> str:
+        """
+        Given a project name, attempt to resolve it via curated list, RTD, or PyPI.
+        """
+        logger.info(f"Attempting to resolve project from curated list: {project}")
+        for item in self.items:
+            if item.name == project:
+                return item.url
+
+        logger.info(f"Attempting to resolve project from Internet: {project}")
+        try:
+            return RemoteObjectsInv(project).discover()
+        except FileNotFoundError as ex:
+            logger.warning(ex)
+
+        raise KeyError(f"Project not found: {project}")
+
+    def suggest(self, project: str, term: str, threshold: int = 50) -> t.List[str]:
         """
         Find occurrences for "term" in Sphinx inventory.
         A wrapper around sphobjinv's `suggest`.
@@ -95,20 +113,17 @@ class AnansiLibrary:
         https://sphobjinv.readthedocs.io/en/stable/cli/suggest.html
         https://sphobjinv.readthedocs.io/en/stable/api/inventory.html#sphobjinv.inventory.Inventory.suggest
         """
-        for item in self.items:
-            if item.name == project:
-                url = f"{item.url.rstrip('/')}/objects.inv"
-                inv = InventoryManager(url).soi_factory()
-                results = inv.suggest(term, thresh=threshold)
-                if results:
-                    hits = len(results)
-                    logger.info(f"{hits} hits for project/term: {project}/{term}")
-                    return results
-                else:
-                    logger.warning(f"No hits for project/term: {project}/{term}")
-                    return []
+        documentation_url = self.get_project_documentation_url(project)
+        url = f"{documentation_url.rstrip('/')}/objects.inv"
+        inv = InventoryManager(url).soi_factory()
+        results = inv.suggest(term, thresh=threshold)
+        if results:
+            hits = len(results)
+            logger.info(f"{hits} hits for project/term: {project}/{term}")
+            return results
         else:
-            raise KeyError(f"Project not found: {project}")
+            logger.warning(f"No hits for project/term: {project}/{term}")
+            return []
 
 
 @click.group()
@@ -155,7 +170,7 @@ def cli_suggest(ctx: click.Context, project: str, term: str, threshold: int = 50
     try:
         results = library.suggest(project, term, threshold=threshold)
         print("\n".join(results))  # noqa: T201
-    except Exception as ex:
+    except (KeyError, FileNotFoundError) as ex:
         logger.error(str(ex).strip("'"))
         sys.exit(1)
 
