@@ -23,11 +23,11 @@ def test_inventory_omit_documents(capsys):
     assert "std:doc" not in out
 
 
-def test_inventory_manager_unknown():
+def test_inventory_manager_file_not_found():
     invman = InventoryManager("foo")
-    with pytest.raises(NotImplementedError) as ex:
+    with pytest.raises(FileNotFoundError) as ex:
         invman.soi_factory()
-    assert ex.match("Resource type not implemented: foo")
+    assert ex.match("Resource not found: foo")
 
 
 def test_cli_inventory_autodiscover(capsys):

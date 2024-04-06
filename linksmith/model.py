@@ -61,10 +61,10 @@ class ResourceType(AutoStrEnum):
     def detect(cls, location):
         if isinstance(location, io.IOBase):
             return cls.BUFFER
+        if location.startswith("http://") or location.startswith("https://"):
+            return cls.URL
         path = Path(location)
         if path.exists():
             return cls.PATH
-        elif location.startswith("http://") or location.startswith("https://"):
-            return cls.URL
         else:
-            raise NotImplementedError(f"Resource type not implemented: {location}")
+            raise FileNotFoundError(f"Resource not found: {location}")

@@ -44,13 +44,13 @@ def test_unknown_output_format():
     ex.match("Output format not implemented: foo-format")
 
 
-def test_unknown_input_format_single():
-    with pytest.raises(NotImplementedError) as ex:
+def test_file_not_found_format_single():
+    with pytest.raises(FileNotFoundError) as ex:
         inventory_to_text("foo.bar", "text")
-    ex.match("Resource type not implemented: foo.bar")
+    ex.match("Resource not found: foo.bar")
 
 
-def test_unknown_input_format_multiple():
-    with pytest.raises(NotImplementedError) as ex:
+def test_file_not_found_format_multiple():
+    with pytest.raises(FileNotFoundError) as ex:
         inventories_to_text("foo.bar", "text")
-    ex.match("Resource type not implemented: foo.bar")
+    ex.match("Resource not found: foo.bar")

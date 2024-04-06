@@ -28,7 +28,7 @@ def test_cli_output_formats(cli_runner):
     assert result.exit_code == 0
 
 
-def test_cli_inventory_unknown_input(cli_runner):
+def test_cli_inventory_file_not_found(cli_runner):
     """
     CLI test: Invoke `linksmith inventory example.foo`.
     """
@@ -38,20 +38,20 @@ def test_cli_inventory_unknown_input(cli_runner):
         catch_exceptions=False,
     )
     assert result.exit_code == 1
-    assert "Unknown input file type: example.foo" in result.output
+    assert "Resource not found: example.foo" in result.output
 
 
 def test_cli_inventory_unknown_input_with_debug(cli_runner):
     """
     CLI test: Invoke `linksmith inventory example.foo`.
     """
-    with pytest.raises(NotImplementedError) as ex:
+    with pytest.raises(FileNotFoundError) as ex:
         cli_runner.invoke(
             cli,
             args="--debug inventory example.foo",
             catch_exceptions=False,
         )
-    assert ex.match("Unknown input file type: example.foo")
+    assert ex.match("Resource not found: example.foo")
 
 
 def test_cli_single_inventory_path(cli_runner):

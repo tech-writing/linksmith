@@ -28,7 +28,7 @@ def test_resource_type_buffer():
     assert ResourceType.detect(buffer) is ResourceType.BUFFER
 
 
-def test_resource_type_unknown():
-    with pytest.raises(NotImplementedError) as ex:
+def test_resource_not_found_file():
+    with pytest.raises(FileNotFoundError) as ex:
         ResourceType.detect("foobar")
-    assert ex.match("Resource type not implemented: foobar")
+    assert ex.match("Resource not found: foobar")
