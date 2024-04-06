@@ -11,6 +11,7 @@
   https://github.com/tech-writing/linksmith/pull/4#discussion_r1546863551
 
 ## Iteration +2
+- MEP 0002 concerns.
 - Improve HTML output. (sticky breadcrumb/navbar, etc.)
 - Response caching to buffer subsequent invocations
 - Anansi: Accept `with_index` and `with_score` options? 

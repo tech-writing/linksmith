@@ -53,12 +53,15 @@ class OutputFormatRegistry:
 
 
 class ResourceType(AutoStrEnum):
+    LIST = auto()
     BUFFER = auto()
     PATH = auto()
     URL = auto()
 
     @classmethod
     def detect(cls, location):
+        if isinstance(location, list):
+            return cls.LIST
         if isinstance(location, io.IOBase):
             return cls.BUFFER
         if location.startswith("http://") or location.startswith("https://"):

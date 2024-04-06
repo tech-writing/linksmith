@@ -66,6 +66,12 @@ spelling mistake and then send us a pull request or create an issue ticket.
 Thanks in advance for your efforts, we really appreciate any help or feedback.
 
 
+## Acknowledgements
+
+Kudos to [Brian Skinn], [Sviatoslav Sydorenko], [Chris Sewell], and all other
+lovely people around Sphinx and Read the Docs.
+
+
 ## Etymology
 
 > Anansi, or Ananse (/əˈnɑːnsi/ ə-NAHN-see) is an Akan folktale character
@@ -83,12 +89,6 @@ Another [`anansi`] package has already been published to PyPI, so we needed
 to find a different name, and selected [`linksmith`] for the time being.
 _If you have other suggestions as long as this program is in its infancy,
 please let us know._
-
-
-## Acknowledgements
-
-Kudos to [Brian Skinn], [Sviatoslav Sydorenko], [Chris Sewell], and all other
-lovely people around Sphinx and Read the Docs.
 
 
 [adding an inventory decoder for Sphinx]: https://github.com/pyveci/pueblo/pull/73
