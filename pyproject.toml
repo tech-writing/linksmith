@@ -87,6 +87,7 @@ dependencies = [
   "sphinx<7.3",
   "sphobjinv<2.4",
   "tabulate<0.10",
+  "verlib2==0.2.0",
 ]
 [project.optional-dependencies]
 develop = [

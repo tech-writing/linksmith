@@ -14,15 +14,18 @@ import dataclasses
 import logging
 import sys
 import typing as t
+from copy import deepcopy
 from functools import cache
 from importlib.resources import files
 
 import rich_click as click
 import yaml
 from pueblo.util.cli import boot_click
+from verlib2 import Version
 
 from linksmith.settings import help_config
 from linksmith.sphinx.inventory import InventoryManager
+from linksmith.util.data import multikeysort
 
 logger = logging.getLogger(__name__)
 
@@ -35,8 +38,21 @@ class Item:
 
     name: str
     url: str
-    version: t.Optional[str] = None
+    version: t.Optional[Version] = None
     tags: t.Optional[t.List[str]] = dataclasses.field(default_factory=list)
+
+    @classmethod
+    def from_dict(cls, data: t.Dict):
+        if "version" in data:
+            data["version"] = Version(data["version"])
+        return cls(**data)
+
+    def to_dict(self):
+        item = deepcopy(self)
+        version = item.version
+        if item.version:
+            item.version = str(version)
+        return dataclasses.asdict(item)
 
 
 class AnansiLibrary:
@@ -54,16 +70,16 @@ class AnansiLibrary:
     def items(self):
         data = []
         for raw in self.read():
-            data.append(Item(**raw))
-        return data
+            data.append(Item.from_dict(raw))
+        return multikeysort(data, "name", "-version")
 
     def to_list(self):
         """
-        Convert list of items into list of Python objects.
+        Convert list of items into vanilla list of Python dictionaries.
         """
         data = []
         for item in self.items:
-            data.append(dataclasses.asdict(item))
+            data.append(item.to_dict())
         return data
 
     def suggest(self, project: str, term: str):
