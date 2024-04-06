@@ -82,18 +82,24 @@ class AnansiLibrary:
             data.append(item.to_dict())
         return data
 
-    def suggest(self, project: str, term: str):
+    def suggest(self, project: str, term: str, threshold: int = 50):
         """
         Find occurrences for "term" in Sphinx inventory.
         A wrapper around sphobjinv's `suggest`.
 
+        `thresh` defines the minimum |fuzzywuzzy|_ match quality (an integer
+        ranging from 0 to 100) required for a given object to be included in
+        the results list. Can be any float value, but best results are generally
+        obtained with values between 50 and 80.
+
         https://sphobjinv.readthedocs.io/en/stable/cli/suggest.html
+        https://sphobjinv.readthedocs.io/en/stable/api/inventory.html#sphobjinv.inventory.Inventory.suggest
         """
         for item in self.items:
             if item.name == project:
                 url = f"{item.url.rstrip('/')}/objects.inv"
                 inv = InventoryManager(url).soi_factory()
-                results = inv.suggest(term)
+                results = inv.suggest(term, thresh=threshold)
                 if results:
                     hits = len(results)
                     logger.info(f"{hits} hits for project/term: {project}/{term}")
@@ -132,14 +138,22 @@ def cli_list_projects(ctx: click.Context):  # noqa: ARG001
 @click.rich_config(help_config=help_config)
 @click.argument("project")
 @click.argument("term")
+@click.option(
+    "--threshold",
+    type=int,
+    default=50,
+    required=False,
+    help="Define the minimum fuzzywuzzy match quality (an integer ranging from 0 to 100) "
+    "required for a given object to be included in the results list.",
+)
 @click.pass_context
-def cli_suggest(ctx: click.Context, project: str, term: str):  # noqa: ARG001
+def cli_suggest(ctx: click.Context, project: str, term: str, threshold: int = 50):  # noqa: ARG001
     """
     Fuzzy-search intersphinx inventory for desired object(s).
     """
     library = AnansiLibrary()
     try:
-        results = library.suggest(project, term)
+        results = library.suggest(project, term, threshold=threshold)
         print("\n".join(results))  # noqa: T201
     except Exception as ex:
         logger.error(str(ex).strip("'"))

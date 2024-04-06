@@ -13,3 +13,4 @@
 - Anansi: Manage project list in YAML file `curated.yaml`, not Python.
 - Anansi: Provide `anansi list-projects` subcommand, to list curated
   projects managed in accompanying `curated.yaml` file.
+- Anansi: Accept `--threshold` option, forwarding to `sphobjinv`.
