@@ -57,6 +57,15 @@ class AnansiLibrary:
             data.append(Item(**raw))
         return data
 
+    def to_list(self):
+        """
+        Convert list of items into list of Python objects.
+        """
+        data = []
+        for item in self.items:
+            data.append(dataclasses.asdict(item))
+        return data
+
     def suggest(self, project: str, term: str):
         """
         Find occurrences for "term" in Sphinx inventory.
@@ -93,6 +102,18 @@ def cli(ctx: click.Context):
 
 @click.command()
 @click.rich_config(help_config=help_config)
+@click.pass_context
+def cli_list_projects(ctx: click.Context):  # noqa: ARG001
+    """
+    List curated projects managed in accompanying `curated.yaml` file.
+    """
+    library = AnansiLibrary()
+    results = library.to_list()
+    print(yaml.dump(results))  # noqa: T201
+
+
+@click.command()
+@click.rich_config(help_config=help_config)
 @click.argument("project")
 @click.argument("term")
 @click.pass_context
@@ -109,4 +130,5 @@ def cli_suggest(ctx: click.Context, project: str, term: str):  # noqa: ARG001
         sys.exit(1)
 
 
+cli.add_command(cli_list_projects, name="list-projects")
 cli.add_command(cli_suggest, name="suggest")
