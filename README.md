@@ -35,7 +35,7 @@ considering.
 ## Setup
 
 ```bash
-pip install 'linksmith @ git+https://github.com/tech-writing/linksmith.git'
+pip install --upgrade linksmith
 ```
 
 

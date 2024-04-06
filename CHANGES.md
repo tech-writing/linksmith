@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## v0.0.0 - 2024-xx-xx
+## v0.0.1 - 2024-04-06
 - Inventory: Implement `linksmith inventory` and `linksmith output-formats`
   subcommands, based on `sphobjinv` and others. Thanks, @bskinn.
 - Anansi: Implement `linksmith anansi suggest`, also available as `anansi`,
