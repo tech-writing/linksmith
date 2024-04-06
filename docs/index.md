@@ -1,6 +1,8 @@
 # Linksmith
 
 A program for processing Hyperlinks, Sphinx references, and inventories.
+It is heavily based on [`sphinx.ext.intersphinx`] and [sphobjinv], and
+intends to provide [DWIM]-like tooling for [Sphinx] and [Hyperlinks].
 
 ::::::{grid} 1 3 3 3
 :margin: 4 4 0 0
@@ -72,3 +74,10 @@ Intrigued by MEP 0002? Enjoy reading [](inv:mep#meps/mep-0002).
 In order to start hacking on Linksmith, please refer to the documentation
 page about how to set up a [](#development-sandbox).
 :::
+
+
+[DWIM]: https://en.wikipedia.org/wiki/DWIM
+[Hyperlinks]: https://en.wikipedia.org/wiki/Hyperlink
+[Sphinx]: https://www.sphinx-doc.org/
+[`sphinx.ext.intersphinx`]: https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html
+[sphobjinv]: https://sphobjinv.readthedocs.io/
