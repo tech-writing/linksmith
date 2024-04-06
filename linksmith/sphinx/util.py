@@ -1,38 +1,53 @@
 import logging
 import re
+import typing as t
 from pathlib import Path
 
 import requests
+from dynamic_imports import import_module_attr
 
 logger = logging.getLogger(__name__)
 
 
-class LocalObjectsInv:
+class LocalFileDiscoverer:
     """
-    Support discovering an `objects.inv` in current working directory.
+    Support discovering a file in current working directory.
     """
 
-    # Candidate paths where to look for `objects.inv` in current working directory.
-    objects_inv_candidates = [
-        Path("objects.inv"),
-        Path("doc") / "_build" / "objects.inv",
-        Path("docs") / "_build" / "objects.inv",
-        Path("doc") / "_build" / "html" / "objects.inv",
-        Path("docs") / "_build" / "html" / "objects.inv",
-        Path("doc") / "build" / "html" / "objects.inv",
-        Path("docs") / "build" / "html" / "objects.inv",
-    ]
+    filename: str
+
+    # Candidate paths where to look for file in current working directory.
+    candidates: t.List[Path] = []
 
     @classmethod
     def discover(cls, project_root: Path) -> Path:
         """
-        Return `Path` instance of discovered `objects.inv` in current working directory.
+        Return `Path` instance of discovered file in current working directory.
         """
-        for candidate in cls.objects_inv_candidates:
-            path = project_root / candidate
+        for candidate in [Path(".")] + cls.candidates:
+            path = project_root / candidate / cls.filename
             if path.exists():
                 return path
-        raise FileNotFoundError("No objects.inv found in working directory")
+        raise FileNotFoundError(f"No {cls.filename} found in working directory")
+
+
+class LocalObjectsInv(LocalFileDiscoverer):
+    """
+    Support discovering an `objects.inv` in current working directory.
+    """
+
+    # Designated file name.
+    filename = "objects.inv"
+
+    # Candidate paths.
+    candidates = [
+        Path("doc") / "_build",
+        Path("docs") / "_build",
+        Path("doc") / "_build" / "html",
+        Path("docs") / "_build" / "html",
+        Path("doc") / "build" / "html",
+        Path("docs") / "build" / "html",
+    ]
 
 
 class RemoteObjectsInv:
@@ -102,3 +117,29 @@ class RemoteObjectsInv:
                 pass
 
         raise FileNotFoundError("No objects.inv discovered through PyPI")
+
+
+class LocalConfPy(LocalFileDiscoverer):
+    """
+    Support discovering a `conf.py` in current working directory.
+    """
+
+    # Designated file name.
+    filename = "conf.py"
+
+    # Candidate paths.
+    candidates = [
+        Path("doc"),
+        Path("docs"),
+    ]
+
+
+def read_intersphinx_mapping_urls(conf_py: Path) -> t.List[str]:
+    """
+    Read `intersphinx_mapping` from `conf.py` and return list of URLs to `object.inv`.
+    """
+    urls = []
+    intersphinx_mapping = import_module_attr(conf_py, "intersphinx_mapping")
+    for item in intersphinx_mapping.values():
+        urls.append(f"{item[0].rstrip('/')}/objects.inv")
+    return urls

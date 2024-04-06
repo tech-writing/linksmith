@@ -76,6 +76,7 @@ dynamic = [
   "version",
 ]
 dependencies = [
+  "dynamic-imports<2",
   "marko<3",
   "myst-parser[linkify]<3,>=0.18",
   "pueblo[cli]==0.0.9",

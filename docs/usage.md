@@ -50,9 +50,13 @@ linksmith inventory \
 
 :::{rubric} Auto-Discovery
 :::
-Discover `objects.inv` in working directory.
+Discover `objects.inv` and `conf.py` in working directory.
 ```shell
 linksmith inventory
+```
+Favourite output format:
+```shell
+linksmith inventory --format=html+table > inventory.html
 ```
 
 

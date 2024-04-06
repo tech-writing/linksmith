@@ -1,3 +1,4 @@
+from pathlib import Path
 from unittest.mock import patch
 
 import pytest
@@ -34,7 +35,10 @@ def test_cli_inventory_autodiscover(capsys):
     """
     Verify local `objects.inv` auto-discovery works.
     """
-    with patch("linksmith.sphinx.util.LocalObjectsInv.objects_inv_candidates", ["tests/assets/linksmith.inv"]):
+    with (
+        patch("linksmith.sphinx.util.LocalObjectsInv.filename", "linksmith.inv"),
+        patch("linksmith.sphinx.util.LocalObjectsInv.candidates", [Path("tests/assets")]),
+    ):
         dump_inventory_universal([])
     out, err = capsys.readouterr()
     assert "std:doc" in out
@@ -45,7 +49,10 @@ def test_inventory_no_input():
     """
     Exercise a failing auto-discovery, where absolutely no input files can be determined.
     """
-    with patch("linksmith.sphinx.util.LocalObjectsInv.objects_inv_candidates", []):
+    with (
+        patch("linksmith.sphinx.util.LocalConfPy.candidates", []),
+        patch("linksmith.sphinx.util.LocalObjectsInv.candidates", []),
+    ):
         with pytest.raises(FileNotFoundError) as ex:
             dump_inventory_universal([])
-        ex.match("No inventory specified, and none discovered: No objects.inv found in working directory")
+        ex.match("No inventory specified, and none discovered")
