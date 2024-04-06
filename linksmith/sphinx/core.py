@@ -25,13 +25,17 @@ def dump_inventory_universal(infiles: t.List[str], format_: str = "text"):
             infiles = [str(local_objects_inv)]
         except Exception as ex:
             raise FileNotFoundError(f"No inventory specified, and none discovered: {ex}")
+
+    # Pre-flight checks.
+    for infile in infiles:
+        ResourceType.detect(infile)
+
+    # Process input files.
     for infile in infiles:
         if infile.endswith(".inv"):
             inventory_to_text(infile, format_=format_)
         elif infile.endswith(".txt"):
             inventories_to_text(infile, format_=format_)
-        else:
-            raise NotImplementedError(f"Unknown input file type: {infile}")
 
 
 def inventory_to_text(url: str, format_: str = "text"):
