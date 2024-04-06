@@ -64,10 +64,15 @@ Suggest references from curated intersphinx inventories.
 :::{rubric} Synopsis
 :::
 
+Run term suggestion on Sphinx documentation project, per its published `objects.inv` file.
+```shell
+anansi suggest sarge capture
+```
 ```shell
 anansi suggest matplotlib draw
 ```
 
+Display list of curated projects.
 ```shell
-anansi suggest sarge capture
+anansi list-projects
 ```

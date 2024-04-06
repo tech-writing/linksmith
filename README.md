@@ -18,16 +18,18 @@ considering.
 [![Coverage status][badge-coverage]][project-codecov]
 
 
-## Why
+## What's Inside
 
-- Grown out of passion for [Sphinx], [Hyperlinks], and [DWIM],
-  and a sweet conversation at pueblo's sketch about [adding an inventory
-  decoder for Sphinx].
-- To learn [sphobjinv], and explore a few convenience heuristics around it.
-- To host code for community operations, alongside software tests and
-  packaging, in order to provide better maintainability and code re-use.
-- Along the lines of shuffling code around, provide a few tangible features
-  [collected the other day][rfc].
+- A few convenience wrappers around [`sphinx.ext.intersphinx`] and [sphobjinv].
+- Ideas to support [DWIM]-like tooling for [Sphinx] and [Hyperlinks],
+  coming from a sweet conversation at pueblo's sketch about [adding an
+  inventory decoder for Sphinx], summarized into a [feature wish list][rfc].
+- Code for community operations, alongside software tests and packaging,
+  in order to provide better maintainability and re-use.
+
+> [!WARNING]
+> Here be dragons. Please note the program is pre-alpha, and a work in
+> progress, so everything may change while we go.
 
 
 ## Setup
@@ -43,14 +45,8 @@ pip install 'linksmith @ git+https://github.com/tech-writing/linksmith.git'
 linksmith inventory https://linksmith.readthedocs.io/en/latest/objects.inv
 ```
 
-Read more at the [Linksmith Usage] documentation.
-
-The `linksmith inventory` subsystem is heavily based on
-`sphinx.ext.intersphinx` and `sphobjinv`.
-
-> [!WARNING]
-> Here be dragons. Please note the program is pre-alpha, and a work in
-> progress, so everything may change while we go.
+More details and other subsystems are outlined at the [Linksmith Usage]
+documentation.
 
 
 ## Development
@@ -108,6 +104,7 @@ lovely people around Sphinx and Read the Docs.
 [Linksmith Usage]: https://linksmith.readthedocs.io/en/latest/usage.html
 [rfc]: https://linksmith.readthedocs.io/en/latest/rfc.html
 [Sphinx]: https://www.sphinx-doc.org/
+[`sphinx.ext.intersphinx`]: https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html
 [sphobjinv]: https://sphobjinv.readthedocs.io/
 [Sviatoslav Sydorenko]: https://github.com/webknjaz
 
