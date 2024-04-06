@@ -11,3 +11,5 @@
 - Accept `linksmith inventory` without `INFILES` argument, implementing
   auto-discovery of `objects.inv` in local current working directory.
 - Anansi: Manage project list in YAML file `curated.yaml`, not Python.
+- Anansi: Provide `anansi list-projects` subcommand, to list curated
+  projects managed in accompanying `curated.yaml` file.

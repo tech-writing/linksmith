@@ -2,6 +2,16 @@ import linksmith
 from linksmith.cli import cli
 
 
+def test_anansi_list_projects(cli_runner):
+    result = cli_runner.invoke(
+        cli,
+        args="anansi list-projects",
+        catch_exceptions=False,
+    )
+    assert result.exit_code == 0
+    assert "matplotlib" in result.output
+
+
 def test_anansi_pure(cli_runner):
     result = cli_runner.invoke(
         cli,
