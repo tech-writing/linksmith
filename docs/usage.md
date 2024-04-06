@@ -59,7 +59,8 @@ linksmith inventory
 (anansi)=
 ## Anansi
 
-Suggest references from curated intersphinx inventories.
+Suggest references from intersphinx inventories, derived from curated projects,
+RTD, or PyPI.
 
 :::{rubric} Synopsis
 :::
@@ -70,6 +71,12 @@ anansi suggest sarge capture
 ```
 ```shell
 anansi suggest matplotlib draw
+```
+```shell
+anansi suggest requests patch
+```
+```shell
+anansi suggest beradio json
 ```
 
 Display list of curated projects.
