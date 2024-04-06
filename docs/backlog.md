@@ -1,13 +1,13 @@
 # Backlog
 
 ## Iteration +1
-- Unlock accessing intersphinx mappings in `conf.py`
-- Access remote `conf.py` at GitHub or HTTP
-- Add output flavor, like `--details=compact,full`.
+- Inventory: Access remote `conf.py` at GitHub or HTTP
+- Inventory: Unlock `omit_documents` option
+- Inventory+Anansi: Add output flavor, like `--details=compact,full`.
   **Full details**, well, should display **full URLs**, ready for
   navigational consumption (clicking).
-- Look into intersphinx-untangled.
-- More attractive JSON output.
+- Community: Look into intersphinx-untangled.
+- Inventory: More attractive JSON output.
   https://github.com/tech-writing/linksmith/pull/4#discussion_r1546863551
 
 ## Iteration +2
@@ -25,3 +25,4 @@
 - Anansi: Display list of curated inventories.
 - Anansi: Accept and delegate `threshold` parameter.
 - Process multiple objects.inv: Strictness
+- Inventory: Unlock accessing intersphinx mappings in `conf.py`

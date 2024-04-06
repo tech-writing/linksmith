@@ -15,7 +15,7 @@ git clone https://github.com/tech-writing/linksmith
 cd linksmith
 python3 -m venv .venv
 source .venv/bin/activate
-pip install --editable=.[develop,docs,test]
+pip install --editable='.[develop,docs,test]'
 poe check
 ```
 
@@ -50,7 +50,7 @@ poe docs-autobuild
 
 ```shell
 # Install a few more prerequisites.
-pip install --editable=.[release]
+pip install --editable='.[release]'
 
 # Designate a new version.
 git tag v0.1.0
