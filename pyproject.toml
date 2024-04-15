@@ -100,7 +100,7 @@ develop = [
 docs = [
   "furo==2024.1.29",
   "sphinx<7.3",
-  "sphinx-autobuild==2024.2.4",
+  "sphinx-autobuild==2024.4.13",
   "sphinx-copybutton<0.6",
   "sphinx-design-elements<0.4",
 ]
