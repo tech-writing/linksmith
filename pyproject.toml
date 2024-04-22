@@ -83,7 +83,7 @@ dependencies = [
   "pyyaml<7",
   "requests<3",
   "rich-click<2",
-  "sphinx<7.3",
+  "sphinx<7.4",
   "sphobjinv<2.4",
   "tabulate<0.10",
   "verlib2==0.2.0",
@@ -99,7 +99,7 @@ develop = [
 ]
 docs = [
   "furo==2024.1.29",
-  "sphinx<7.3",
+  "sphinx<7.4",
   "sphinx-autobuild==2024.2.4",
   "sphinx-copybutton<0.6",
   "sphinx-design-elements<0.4",
