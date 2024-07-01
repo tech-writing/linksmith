@@ -102,7 +102,7 @@ docs = [
   "sphinx<7.3",
   "sphinx-autobuild==2024.2.4",
   "sphinx-copybutton<0.6",
-  "sphinx-design-elements<0.4",
+  "sphinx-design-elements<0.5",
 ]
 release = [
   "build<2",
