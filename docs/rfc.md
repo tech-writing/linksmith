@@ -42,7 +42,7 @@ to existing tools and libraries, and poly-filling the gaps.
 - Colleagues are running [](#rfc-community-operations) like Sviatoslav's
   [intersphinx-untangled], or Brian's [intersphinx-gist], with code that
   is not packaged for reusability.
-- MyST support, specifically [](inv:mep#meps/mep-0002), should not be left
+- MyST support, specifically [](inv:mep#mep-0002), should not be left
   behind, but instead should be considered from the very beginning. _Primarily_
   using Markdown will certainly be the future of technical writing with Sphinx.
 - Focus on technically relevant details around Sphinx references, cross-
@@ -136,7 +136,7 @@ Python, in order to provide easy command-line access, right?
 [intersphinx-gist]: https://github.com/bskinn/intersphinx-gist
 [intersphinx-untangled]: https://github.com/webknjaz/intersphinx-untangled
 [intersphinx_mappings.txt]: https://gist.github.com/bskinn/0e164963428d4b51017cebdb6cda5209
-[MEP 0002]: https://mep.mystmd.org/en/latest/meps/mep-0002/
+[MEP 0002]: https://mep.mystmd.org/mep-0002
 [MyST]: https://myst-parser.readthedocs.io/
 [new `references` builder in Sphinx]: https://github.com/sphinx-doc/sphinx/pull/12190
 [relevant code to generate a static website]: https://github.com/webknjaz/intersphinx-untangled/blob/5d495581ec9e9096aa503c7281089f0a883be619/.github/workflows/build-gh-pages.yml#L29-L82

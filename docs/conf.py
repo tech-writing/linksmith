@@ -55,7 +55,7 @@ copybutton_prompt_is_regexp = True
 
 # Configure Intersphinx
 intersphinx_mapping = {
-    "mep": ("https://mep.mystmd.org/en/latest/", None),
+    "mep": ("https://mep.mystmd.org/", None),
     "myst": ("https://myst-parser.readthedocs.io/en/latest/", None),
     "sd": ("https://sphinx-design.readthedocs.io/en/latest/", None),
     "sde": ("https://sphinx-design-elements.readthedocs.io/en/latest/", None),
