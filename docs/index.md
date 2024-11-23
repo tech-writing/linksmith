@@ -63,7 +63,7 @@ backlog
 
 
 :::{note}
-Intrigued by MEP 0002? Enjoy reading [](inv:mep#meps/mep-0002).
+Intrigued by MEP 0002? Enjoy reading [](inv:mep#mep-0002).
 :::
 
 :::{tip}
