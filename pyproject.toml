@@ -107,7 +107,7 @@ docs = [
 release = [
   "build<2",
   "keyring",
-  "twine<6",
+  "twine<7",
 ]
 test = [
   "pytest<9",
