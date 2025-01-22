@@ -5,10 +5,6 @@ requires = [
   "versioningit<4",
 ]
 
-[tool.versioningit.vcs]
-method = "git"
-default-tag = "0.0.0"
-
 [project]
 name = "linksmith"
 description = "A program for processing Hyperlinks, Sphinx references, and inventories."
@@ -88,8 +84,7 @@ dependencies = [
   "tabulate<0.10",
   "verlib2==0.2.0",
 ]
-[project.optional-dependencies]
-develop = [
+optional-dependencies.develop = [
   "black<25",
   "mypy<1.15",
   "poethepoet<1",
@@ -97,60 +92,83 @@ develop = [
   "ruff<0.9",
   "validate-pyproject<0.19",
 ]
-docs = [
+optional-dependencies.docs = [
   "furo==2024.8.6",
   "sphinx<8.1",
   "sphinx-autobuild==2024.2.4",
   "sphinx-copybutton<0.6",
   "sphinx-design-elements<0.5",
 ]
-release = [
+optional-dependencies.release = [
   "build<2",
   "keyring",
   "twine<7",
 ]
-test = [
+optional-dependencies.test = [
   "pytest<9",
   "pytest-cov<7",
-  "sphinx_pytest<0.3",
+  "sphinx-pytest<0.3",
 ]
-[project.urls]
-changelog = "https://github.com/tech-writing/linksmith/blob/main/CHANGES.md"
-documentation = "https://linksmith.readthedocs.io/"
-homepage = "https://linksmith.readthedocs.io/"
-repository = "https://github.com/tech-writing/linksmith"
-[project.scripts]
-anansi = "linksmith.sphinx.community.anansi:cli"
-linksmith = "linksmith.cli:cli"
+urls.changelog = "https://github.com/tech-writing/linksmith/blob/main/CHANGES.md"
+urls.documentation = "https://linksmith.readthedocs.io/"
+urls.homepage = "https://linksmith.readthedocs.io/"
+urls.repository = "https://github.com/tech-writing/linksmith"
+scripts.anansi = "linksmith.sphinx.community.anansi:cli"
+scripts.linksmith = "linksmith.cli:cli"
+
+[tool.setuptools.packages.find]
+namespaces = false
 
 [tool.black]
 line-length = 120
 
-[tool.coverage.run]
-branch = false
-omit = [
-  "tests/*",
-]
-source = ["linksmith"]
+[tool.ruff]
+line-length = 120
 
-[tool.coverage.report]
-fail_under = 0
-show_missing = true
-
-[tool.mypy]
-packages = ["linksmith"]
-exclude = [
+lint.select = [
+  # flake8-unused-arguments
+  "ARG",
+  # pyupgrade
+  # "UP",
+  # flake8-commas
+  "COM",
+  # Pycodestyle
+  "E",
+  # eradicate
+  "ERA",
+  # Pyflakes
+  "F",
+  # isort
+  "I",
+  # flake8-quotes
+  "Q",
+  # return
+  "RET",
+  # Bandit
+  "S",
+  # print
+  "T20",
+  # future-annotations
+  # "FA",
+  # flake8-type-checking
+  "TCH",
+  "W",
+  # flake8-2020
+  "YTT",
+  # flake8-use-pathlib
+  # "PTH"
 ]
-ignore_missing_imports = true
-check_untyped_defs = false
-implicit_optional = true
-install_types = true
-no_implicit_optional = true
-non_interactive = true
-show_error_codes = true
-strict_equality = true
-warn_unused_ignores = true
-warn_redundant_casts = true
+
+lint.extend-ignore = [
+  # Unnecessary variable assignment before `return` statement
+  "RET504",
+  # Unnecessary `elif` after `return` statement
+  "RET505",
+]
+
+lint.per-file-ignores."docs/conf.py" = [ "ERA001" ]   # Allow commented-out code.
+lint.per-file-ignores."linksmith/cli.py" = [ "T201" ] # Allow `print`.
+lint.per-file-ignores."tests/*" = [ "S101" ]          # Allow use of `assert`.
 
 [tool.pytest.ini_options]
 addopts = "-rA --verbosity=3 --cov --cov-report=term-missing --cov-report=xml"
@@ -166,59 +184,35 @@ xfail_strict = true
 markers = [
 ]
 
-[tool.ruff]
-line-length = 120
-
-lint.select = [
-    # Pycodestyle
-    "E",
-    "W",
-    # Pyflakes
-    "F",
-    # isort
-    "I",
-    # Bandit
-    "S",
-    # flake8-quotes
-    "Q",
-    # eradicate
-    "ERA",
-    # flake8-2020
-    "YTT",
-    # print
-    "T20",
-    # return
-    "RET",
-    # pyupgrade
-    # "UP",
-    # flake8-commas
-    "COM",
-    # future-annotations
-    # "FA",
-    # flake8-type-checking
-    "TCH",
-    # flake8-unused-arguments
-    "ARG",
-    # flake8-use-pathlib
-    # "PTH"
+[tool.coverage.run]
+branch = false
+omit = [
+  "tests/*",
 ]
+source = [ "linksmith" ]
 
-lint.extend-ignore = [
-  # Unnecessary variable assignment before `return` statement
-  "RET504",
-  # Unnecessary `elif` after `return` statement
-  "RET505",
+[tool.coverage.report]
+fail_under = 0
+show_missing = true
+
+[tool.mypy]
+packages = [ "linksmith" ]
+exclude = [
 ]
+ignore_missing_imports = true
+check_untyped_defs = false
+implicit_optional = true
+install_types = true
+no_implicit_optional = true
+non_interactive = true
+show_error_codes = true
+strict_equality = true
+warn_unused_ignores = true
+warn_redundant_casts = true
 
-
-[tool.ruff.lint.per-file-ignores]
-"tests/*" = ["S101"]           # Allow use of `assert`.
-"docs/conf.py" = ["ERA001"]    # Allow commented-out code.
-"linksmith/cli.py" = ["T201"]  # Allow `print`.
-
-[tool.setuptools.packages.find]
-namespaces = false
-
+[tool.versioningit.vcs]
+method = "git"
+default-tag = "0.0.0"
 
 # ===================
 # Tasks configuration
@@ -232,10 +226,10 @@ check = [
 ]
 
 docs-autobuild = [
-  { cmd = "sphinx-autobuild --open-browser --watch=docs docs docs/_build" }
+  { cmd = "sphinx-autobuild --open-browser --watch=docs docs docs/_build" },
 ]
 docs-html = [
-  { cmd = "sphinx-build -W --keep-going docs docs/_build" }
+  { cmd = "sphinx-build -W --keep-going docs docs/_build" },
 ]
 
 format = [
