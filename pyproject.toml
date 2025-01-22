@@ -96,7 +96,7 @@ optional-dependencies.develop = [
 optional-dependencies.docs = [
   "furo==2024.8.6",
   "sphinx<8.1",
-  "sphinx-autobuild==2024.2.4",
+  "sphinx-autobuild==2024.10.3",
   "sphinx-copybutton<0.6",
   "sphinx-design-elements<0.5",
 ]
