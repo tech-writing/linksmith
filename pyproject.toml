@@ -76,7 +76,7 @@ dependencies = [
   "dynamic-imports<2",
   "marko<3",
   "myst-parser[linkify]>=0.18,<5",
-  "pueblo[cli]==0.0.10",
+  "pueblo[cli]==0.0.11",
   "pyyaml<7",
   "requests<3",
   "rich-click<2",
