@@ -80,7 +80,7 @@ dependencies = [
   "pyyaml<7",
   "requests<3",
   "rich-click<2",
-  "sphinx<8.2",
+  "sphinx<8.3",
   "sphobjinv<2.4",
   "tabulate<0.10",
   "verlib2==0.3.1",
@@ -95,7 +95,7 @@ optional-dependencies.develop = [
 ]
 optional-dependencies.docs = [
   "furo==2024.8.6",
-  "sphinx<8.2",
+  "sphinx<8.3",
   "sphinx-autobuild==2024.2.4",
   "sphinx-copybutton<0.6",
   "sphinx-design-elements<0.5",
