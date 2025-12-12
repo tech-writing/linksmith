@@ -1,6 +1,7 @@
 # Change Log
 
 ## Unreleased
+- Anansi: Fixed RTD project discovery
 
 ## v0.0.1 - 2024-04-06
 - Inventory: Implement `linksmith inventory` and `linksmith output-formats`

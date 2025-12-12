@@ -1,5 +1,4 @@
 import logging
-import re
 import typing as t
 from pathlib import Path
 
@@ -67,7 +66,7 @@ class RemoteObjectsInv:
             return self.discover_pypi()
 
     def discover_rtd(self) -> str:
-        logger.info(f"Attempting to resolve project through RTD: {self.project}")
+        logger.info(f"Attempting to resolve project through Read the Docs: {self.project}")
         try:
             result = requests.get(
                 "https://readthedocs.org/api/v3/search/",
@@ -77,16 +76,9 @@ class RemoteObjectsInv:
         except IndexError:
             raise FileNotFoundError(f"Project not found at Read the Docs: {self.project}")
         domain = result["domain"]
-        path = result["path"]
-
-        # No way to discover the language slot via API?
-        # Derive `/en/latest/` into `/en/latest/objects.inv`. (requests)
-        # Derive `/en/stable/examples.html` into `/en/stable/objects.inv`. (requests-cache)
-        # Derive `/genindex.html` into `/objects.inv`. (cratedb-guide)
-        # TODO: Also handle nested URLs like `/en/latest/snippets/myst/dropdown-group.html`.
-        path = re.sub(r"(.*)/.*\.html?$", "\\1", path)
-
-        rtd_url = f"{domain}/{path}"
+        response = requests.get(domain, allow_redirects=True, timeout=self.HTTP_TIMEOUT)
+        rtd_url = response.url
+        logger.info(f"Project found at Read the Docs: {rtd_url}")
         rtd_exists = requests.get(rtd_url, allow_redirects=True, timeout=self.HTTP_TIMEOUT).status_code == 200
 
         if rtd_exists:
