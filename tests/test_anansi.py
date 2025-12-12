@@ -18,7 +18,8 @@ def test_anansi_pure(cli_runner):
         args="anansi",
         catch_exceptions=False,
     )
-    assert result.exit_code == 0
+    assert result.exit_code == 2, result.output
+    assert "Run operations on curated community projects" in result.output
 
 
 def test_anansi_suggest_project_missing(cli_runner):
@@ -77,7 +78,7 @@ def test_anansi_suggest_via_rtd(cli_runner):
         args="anansi suggest requests-cache patch --threshold=75",
         catch_exceptions=False,
     )
-    assert result.exit_code == 0
+    assert result.exit_code == 0, result.output
     assert ":std:label:`patching`" in result.output
 
 
