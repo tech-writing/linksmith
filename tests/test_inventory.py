@@ -56,3 +56,12 @@ def test_inventory_no_input():
         with pytest.raises(FileNotFoundError) as ex:
             dump_inventory_universal([])
         ex.match("No inventory specified, and none discovered")
+
+
+def test_inventory_unknown_file_type():
+    """
+    Exercise failing on a wrong file type.
+    """
+    with pytest.raises(NotImplementedError) as ex:
+        dump_inventory_universal(["tests/config.py"])
+    ex.match("Unknown input file type: tests/config.py")

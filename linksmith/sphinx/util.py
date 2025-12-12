@@ -84,7 +84,7 @@ class RemoteObjectsInv:
         if rtd_exists:
             return rtd_url
 
-        raise FileNotFoundError("No objects.inv discovered through Read the Docs")
+        raise FileNotFoundError("No objects.inv discovered through Read the Docs")  # pragma: no cover
 
     def discover_pypi(self) -> str:
         logger.info(f"Attempting to resolve project through PyPI: {self.project}")
