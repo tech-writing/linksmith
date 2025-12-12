@@ -48,6 +48,7 @@ class InventoryManager:
         self.location = location
 
     def soi_factory(self) -> soi.Inventory:
+        logger.info(f"Acquiring inventory manager: {self.location}")
         resource_type = ResourceType.detect(self.location)
         if resource_type is ResourceType.PATH:
             return soi.Inventory(source=self.location)
