@@ -1,3 +1,7 @@
+import importlib
+
+from verlib2 import Version
+
 import linksmith
 from linksmith.cli import cli
 
@@ -18,7 +22,11 @@ def test_anansi_pure(cli_runner):
         args="anansi",
         catch_exceptions=False,
     )
-    assert result.exit_code == 2, result.output
+    click_version = importlib.metadata.version("click")
+    if Version(click_version) < Version("8.2"):
+        assert result.exit_code == 0, result.output
+    else:
+        assert result.exit_code == 2, result.output
     assert "Run operations on curated community projects" in result.output
 
 
