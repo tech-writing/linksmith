@@ -1,5 +1,6 @@
-import importlib
+from importlib import metadata
 
+import pytest
 from verlib2 import Version
 
 import linksmith
@@ -16,17 +17,14 @@ def test_anansi_list_projects(cli_runner):
     assert "matplotlib" in result.output
 
 
+@pytest.mark.skipif(Version(metadata.version("click")) < Version("8.2"), reason="Needs Click >= 8.2")
 def test_anansi_pure(cli_runner):
     result = cli_runner.invoke(
         cli,
         args="anansi",
         catch_exceptions=False,
     )
-    click_version = importlib.metadata.version("click")
-    if Version(click_version) < Version("8.2"):
-        assert result.exit_code == 0, result.output
-    else:
-        assert result.exit_code == 2, result.output
+    assert result.exit_code == 2, result.output
     assert "Run operations on curated community projects" in result.output
 
 
