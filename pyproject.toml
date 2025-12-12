@@ -92,12 +92,12 @@ optional-dependencies.develop = [
   "poethepoet<1",
   "pyproject-fmt<3",
   "ruff<0.10",
-  "validate-pyproject<0.25",
+  "validate-pyproject<1",
 ]
 optional-dependencies.docs = [
-  "furo==2024.8.6",
+  "furo>=2024",
   "sphinx<8.2",
-  "sphinx-autobuild==2024.2.4",
+  "sphinx-autobuild>=2024",
   "sphinx-copybutton<0.6",
   "sphinx-design-elements<0.5",
 ]
