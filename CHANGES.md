@@ -1,6 +1,8 @@
 # Change Log
 
 ## Unreleased
+
+## v0.0.2 - 2025-12-13
 - Anansi: Fixed RTD project discovery
 - CI: Validated on Python 3.14
 
