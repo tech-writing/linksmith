@@ -17,7 +17,6 @@ considering.
 [![CI][badge-tests]][project-tests]
 [![Coverage status][badge-coverage]][project-codecov]
 
-
 ## What's Inside
 
 - A few convenience wrappers around [`sphinx.ext.intersphinx`] and [sphobjinv].
@@ -27,17 +26,11 @@ considering.
 - Code for community operations, alongside software tests and packaging,
   in order to provide better maintainability and re-use.
 
-> [!WARNING]
-> Here be dragons. Please note the program is pre-alpha, and a work in
-> progress, so everything may change while we go.
-
-
 ## Setup
 
 ```bash
 pip install --upgrade linksmith
 ```
-
 
 ## Usage
 
@@ -48,12 +41,10 @@ linksmith inventory https://linksmith.readthedocs.io/en/latest/objects.inv
 More details and other subsystems are outlined at the [Linksmith Usage]
 documentation.
 
-
 ## Development
 
 In order to learn how to set up a development sandbox, please visit the
 [development documentation].
-
 
 ## Contributing
 
@@ -65,12 +56,10 @@ spelling mistake and then send us a pull request or create an issue ticket.
 
 Thanks in advance for your efforts, we really appreciate any help or feedback.
 
-
 ## Acknowledgements
 
 Kudos to [Brian Skinn], [Sviatoslav Sydorenko], [Chris Sewell], and all other
 lovely people around Sphinx and Read the Docs.
-
 
 ## Etymology
 
