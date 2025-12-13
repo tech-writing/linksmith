@@ -97,13 +97,13 @@ def inventories_to_text(urls: t.Union[str, Path, io.IOBase, t.List], format_: st
     resource_type = ResourceType.detect(urls)
     url_list = []
     if resource_type is ResourceType.LIST:
-        url_list = t.cast(list, urls)
+        url_list = t.cast("list", urls)
     elif resource_type is ResourceType.BUFFER:
-        url_list = t.cast(io.IOBase, urls).read().splitlines()
+        url_list = t.cast("io.IOBase", urls).read().splitlines()
     elif resource_type is ResourceType.PATH:
-        url_list = Path(t.cast(str, urls)).read_text().splitlines()
+        url_list = Path(t.cast("str", urls)).read_text().splitlines()
     elif resource_type is ResourceType.URL:
-        url_list = requests.get(t.cast(str, urls), timeout=10).text.splitlines()
+        url_list = requests.get(t.cast("str", urls), timeout=10).text.splitlines()
 
     # Generate header.
     if format_.startswith("html"):
