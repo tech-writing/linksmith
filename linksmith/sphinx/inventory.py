@@ -23,7 +23,7 @@ from sphinx.util.typing import InventoryItem
 from linksmith.model import ResourceType
 
 if t.TYPE_CHECKING:
-    from sphinx.application import Sphinx
+    from sphinx.application import Sphinx  # pragma: no cover
 
 logger = logging.getLogger(__name__)
 
@@ -56,7 +56,7 @@ class InventoryManager:
             return soi.Inventory(source=self.location)
         elif resource_type is ResourceType.URL:
             return soi.Inventory(url=self.location)
-        else:  # pragma: nocover
+        else:  # pragma: no cover
             raise TypeError(f"Unknown inventory type: {self.location}")
 
 
