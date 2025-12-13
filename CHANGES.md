@@ -1,6 +1,8 @@
 # Change Log
 
 ## Unreleased
+- Anansi: Fixed RTD project discovery
+- CI: Validated on Python 3.14
 
 ## v0.0.1 - 2024-04-06
 - Inventory: Implement `linksmith inventory` and `linksmith output-formats`

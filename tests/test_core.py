@@ -41,16 +41,16 @@ def test_multiple_inventories_url():
 def test_unknown_output_format():
     with pytest.raises(NotImplementedError) as ex:
         inventory_to_text(OBJECTS_INV_PATH, "foo-format")
-    ex.match("Output format not implemented: foo-format")
+    assert ex.match("Output format not implemented: foo-format")
 
 
 def test_file_not_found_format_single():
     with pytest.raises(FileNotFoundError) as ex:
         inventory_to_text("foo.bar", "text")
-    ex.match("Resource not found: foo.bar")
+    assert ex.match("Resource not found: foo.bar")
 
 
 def test_file_not_found_format_multiple():
     with pytest.raises(FileNotFoundError) as ex:
         inventories_to_text("foo.bar", "text")
-    ex.match("Resource not found: foo.bar")
+    assert ex.match("Resource not found: foo.bar")
