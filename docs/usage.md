@@ -5,12 +5,6 @@ Linksmith provides the `linksmith` command line program. It harbours
 different subsystems, accessible by using corresponding subcommands,
 like `linksmith inventory`.
 
-:::{warning}
-Here be dragons. Please note the program is pre-alpha, and a work in
-progress, so everything may change while we go.
-:::
-
-
 ## Output Formats
 Display all the available output formats at a glance.
 ```shell
