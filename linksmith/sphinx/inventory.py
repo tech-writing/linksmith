@@ -17,11 +17,13 @@ import sphobjinv as soi
 import tabulate
 import yaml
 from marko.ext.gfm import gfm as markdown_to_html
-from sphinx.application import Sphinx
 from sphinx.ext.intersphinx import fetch_inventory, inspect_main
 from sphinx.util.typing import InventoryItem
 
 from linksmith.model import ResourceType
+
+if t.TYPE_CHECKING:
+    from sphinx.application import Sphinx
 
 logger = logging.getLogger(__name__)
 
@@ -99,7 +101,7 @@ class InventoryFormatter:
             srcdir = ""
             config = MockConfig()
 
-        app = t.cast(Sphinx, MockApp())
+        app = t.cast("Sphinx", MockApp())
         inv_data = fetch_inventory(app, "", self.url)
         print(f"# {self.name}")
         print()
