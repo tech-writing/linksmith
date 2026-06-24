@@ -84,7 +84,7 @@ dependencies = [
   "sphinx<8.2",
   "sphobjinv<2.4",
   "tabulate<0.10",
-  "verlib2==0.3.1",
+  "verlib2==0.3.2",
 ]
 optional-dependencies.develop = [
   "black<26",
