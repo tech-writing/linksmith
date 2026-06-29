@@ -107,7 +107,7 @@ optional-dependencies.release = [
   "twine<7",
 ]
 optional-dependencies.test = [
-  "pytest<9",
+  "pytest<10",
   "pytest-cov<8",
   "sphinx-pytest<0.3",
 ]
