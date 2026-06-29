@@ -82,7 +82,7 @@ dependencies = [
   "requests<3",
   "rich-click<2",
   "sphinx<8.2",
-  "sphobjinv<2.4",
+  "sphobjinv<2.5",
   "tabulate<0.10",
   "verlib2==0.3.2",
 ]
