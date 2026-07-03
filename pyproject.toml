@@ -83,7 +83,7 @@ dependencies = [
   "rich-click<2",
   "sphinx<8.2",
   "sphobjinv<2.5",
-  "tabulate<0.10",
+  "tabulate<0.11",
   "verlib2==0.3.2",
 ]
 optional-dependencies.develop = [
