@@ -87,7 +87,7 @@ dependencies = [
   "verlib2==0.3.2",
 ]
 optional-dependencies.develop = [
-  "black<26",
+  "black<27",
   "mypy<2.2",
   "poethepoet<1",
   "pyproject-fmt<3",
